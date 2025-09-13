@@ -1,5 +1,7 @@
 package se.lexicon.model;
 
+import se.lexicon.sequencers.CourseSequencer;
+
 public class Student {
 
     private int id;
@@ -17,7 +19,7 @@ public class Student {
         return id;
     }
     public void setId(int id) {
-        this.id = id;
+        this.id = CourseSequencer.nextId;
     }
     public String getName() {
         return name;
