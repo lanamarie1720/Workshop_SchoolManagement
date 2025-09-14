@@ -19,11 +19,12 @@ public class CourseDaoImpl {
         return course;
     }
 
-    public Course findByName(String name) {
+    public ArrayList<Course> findByName(String name) {
+        ArrayList<Course> arrayList = new ArrayList<>();
         for (Course course : courses){
-            if ((course.getCourseName().equals(name)) return course;
+        if (course.getCourseName().equalsIgnoreCase(name)) arrayList.add(course)
         }
-        return null;
+        return arrayList;
     }
 
     public Course findById(int id) {
@@ -33,21 +34,20 @@ public class CourseDaoImpl {
         return null;
     }
 
-    public Course findByDate(LocalDate date) {
+    public ArrayList<Course> findByDate(LocalDate date) {
+        ArrayList<Course> arrayList = new ArrayList<>();
         for (Course course : courses){
-            if (course.getStartDate() == date)
-                return course;
+            if (course.getStartDate().equals(date)) arrayList.add(course);
         }
-        return null;
+        return arrayList;
     }
 
     public ArrayList<Course> findAll() {
-        return courses;
+        return getCourses();
     }
 
     public boolean delete(Course course) {
-        if (courses.remove(course))
-            return true;
+        if (courses.remove(course)) return true;
         return false;
     }
 }
